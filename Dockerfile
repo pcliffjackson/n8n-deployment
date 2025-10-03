@@ -1,4 +1,4 @@
-FROM n8n:latest
+FROM n8nio/n8n:latest
 
 # Ensure data dir exists and is writable
 USER root
@@ -11,5 +11,6 @@ ENV N8N_PORT=5678
 EXPOSE 5678
 
 CMD ["n8n"]
+
 
 

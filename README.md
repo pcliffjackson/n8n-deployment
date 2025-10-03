@@ -47,3 +47,4 @@ Notes:
 - The `~/.n8n:/home/node/.n8n` bind mount persists credentials locally.
 
 
+
