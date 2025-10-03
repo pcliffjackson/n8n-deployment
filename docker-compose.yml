@@ -7,21 +7,21 @@ services:
     ports:
       - "8080:8080" # Map local port 8080 to container port 8080
     environment:
-      - DB_POSTGRESDB_DATABASE=railway
-      - DB_POSTGRESDB_HOST=postgres.railway.internal
-      - DB_POSTGRESDB_PASSWORD=qoVKoDVZruLpcfjohzgbPJQSjZsXxiFl
-      - DB_POSTGRESDB_PORT=5432
-      - DB_POSTGRESDB_USER=postgres
+      - DB_POSTGRESDB_DATABASE=${POSTGRES_DATABASE}
+      - DB_POSTGRESDB_HOST=${POSTGRES_HOST}
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_POSTGRESDB_PORT=${POSTGRES_PORT}
+      - DB_POSTGRESDB_USER=${POSTGRES_USER}
       - DB_TYPE=postgresdb
       - N8N_BASIC_AUTH_ACTIVE=true
-      - N8N_BASIC_AUTH_PASSWORD=georgeisthree2025
-      - N8N_BASIC_AUTH_USER=PCJAX1987
-      - N8N_ENCRYPTION_KEY=oshhSKJixUiq96zDDSuisFCcHHzTvZa6
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
-      - N8N_HOST=n8n-deployment-production-e9e7.up.railway.app
-      - N8N_PORT=8080
-      - N8N_PROTOCOL=https
-      - WEBHOOK_URL=https://n8n-deployment-production-e9e7.up.railway.app
+      - N8N_HOST=${N8N_HOST}
+      - N8N_PORT=${N8N_PORT}
+      - N8N_PROTOCOL=${N8N_PROTOCOL}
+      - WEBHOOK_URL=${WEBHOOK_URL}
       - NODE_ENV=production
     volumes:
       - ~/.n8n:/home/node/.n8n # Persist configuration and custom nodes
