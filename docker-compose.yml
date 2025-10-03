@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  n8n:
+    image: n8n:latest
+    restart: always
+    ports:
+      - "5678:5678" # Map local port 5678 to container port 5678
+    environment:
+      - N8N_HOST=${N8N_HOST}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - N8N_PROTOCOL=${N8N_PROTOCOL:-http}
+      - NODE_ENV=production
+      - VUE_APP_URL_BASE_API=${WEBHOOK_URL}/
+      - VUE_APP_URL_BASE_WSS=${WEBHOOK_URL}/
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${N8N_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_PASSWORD}
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=${POSTGGRES_HOST}
+      - DB_POSTGRESDB_PORT=${POSTGRES_PORT}
+      - DB_POSTGRESDB_DATABASE=${POSTGRES_DATABASE}
+      - DB_POSTGRESDB_USER=${POSTGRES_USER}
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ~/.n8n:/home/node/.n8n # Persist configuration and custom nodes
